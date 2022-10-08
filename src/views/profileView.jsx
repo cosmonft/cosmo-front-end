@@ -13,8 +13,9 @@ import worldMedia from "./world-media.png"
 
 const ProfileGridLayout = styled.section`
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 20% auto;
     margin-top: 50px;
+    gap: 50px;
 `
 
 const GridItem = styled.div`
@@ -22,12 +23,15 @@ const GridItem = styled.div`
     flex-wrap: wrap;
     flex-direction: column;
     margin: auto;
+    justify-content: center;
+    align-items: center;
 `
 
 const GridFigCaption = styled.figcaption`
     display: grid;
     grid-template-columns: repeat(2,1fr);
     grid-template-rows: repeat(4,1fr);
+    width: 200px;
 `
 
 const UserInputWrapper = styled.div`
@@ -45,6 +49,7 @@ const UserInputWrapper = styled.div`
     filter: drop-shadow(0px 4px 49px rgba(0, 7, 72, 0.12));
     backdrop-filter: blur(7.5px);
     border-radius: 20px;
+    border: solid 2px rgba(255, 255, 255, 0.3);
 `
 
 const UserInput = styled.input`
@@ -90,7 +95,7 @@ const FeedSection = styled.section`
 `
 const PostWrapper = styled.article`
     display: flex;
-    flex-direction: column;
+    flex-direction: column;margin
     align-items: flex-start;
     padding: 20px 20px 20px 26px;
     gap: 20px;
@@ -101,9 +106,19 @@ const PostWrapper = styled.article`
     filter: drop-shadow(0px 4px 49px rgba(0, 7, 72, 0.12));
     backdrop-filter: blur(7.5px);
     border-radius: 20px;
+    border: solid 2px rgba(255, 255, 255, 0.3);
 `
 
 const posts = [
+    {
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor vitae vulputate nascetur tempus, ullamcorper amet. Libero cursus cursus cras integer phasellus pellentesque. Leo ut nec."
+    },
+    {
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor vitae vulputate nascetur tempus, ullamcorper amet. Libero cursus cursus cras integer phasellus pellentesque. Leo ut nec."
+    },
+    {
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor vitae vulputate nascetur tempus, ullamcorper amet. Libero cursus cursus cras integer phasellus pellentesque. Leo ut nec."
+    },
     {
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor vitae vulputate nascetur tempus, ullamcorper amet. Libero cursus cursus cras integer phasellus pellentesque. Leo ut nec."
     },
@@ -118,11 +133,15 @@ const ProfileView = () => {
     const [mediaClicked, setMediaClicked] = useState(false)
     const [nftClicked, setNftClicked] = useState(false)
 
+    const handleClick = () => {
+
+    }
+
   return (
     <div style={{backgroundImage:`url(${bgImg})`, height: "100%", fontFamily:"Poppins"}}>
     <PrimarySearchAppBar />
     <ProfileGridLayout>
-        <GridItem style={{}}>
+        <GridItem style={{height:"100%"}}>
             <figure>
                 <img
                     src={ProfileImg}
@@ -134,32 +153,30 @@ const ProfileView = () => {
                 <div style={{
                     display:"flex",
                     justifyContent: "space-between",
-                    width: "330px"
+                    width: "280px"
                 }}>
                     <h3 style={{gridRow:"1",gridColumn:"1", color:"#FFF", marginLeft: "20px"}}>Cristie Montalvo</h3>
                     <div style={{marginTop:"15px"}}><img src={BellImg} alt="bell-notification-icon"/></div>
                 </div>
                 <h4 style={{gridRow:"2",gridColumn:"1", color: "#9747FF"}}>@criszztiemg.lens</h4>
                 <div style={{gridRow:"3", gridColumn:"1", color:"#FFF"}}>
-                    <div>
-                        <p>163</p>
-                        <p>Following</p>
-                    </div>
+                    <p>163</p>
+                    <p>Following</p>
                 </div>
-                <div>
                 <div style={{gridRow:"3", gridColumn:"2", color:"#FFF"}}>
-                        <p>631</p>
-                        <p>Followers</p>
-                    </div>
+                    <p>631</p>
+                    <p>Followers</p>
                 </div>
             </GridFigCaption>
             </figure>
-            <PortalButton
-                name="Follow"
-                className="secondary-button"
-            />
+            <div style={{marginTop:"-100px"}}>
+                <PortalButton
+                    name="Follow"
+                    className="secondary-button"
+                />
+            </div>
             <div style={{marginLeft:"50px"}}>
-                <p style={{color:"#FFF"}}>
+                <p style={{color:"#FFF", width: "auto"}}>
                     UX/UI Designer working in web3. Ilustrator and NFT artist, Frontend Developer, Solidity Developer.
                 </p>
                 <div>
@@ -186,10 +203,10 @@ const ProfileView = () => {
                 <UserInput placeholder="What's happening?"/> 
                 <InputMedia>
                     <div style={{display: "flex", justifyContent:"space-between", gap:"50px", marginTop:"30px"}}>
-                    <img src={imgMedia} width="30px" height="34px" alt="media-icon"/>
-                        <img src={docMedia} width="30px" height="34px" alt="media-icon"/>
-                        <img src={gifMedia} width="30px" height="34px" alt="media-icon"/>
-                        <img src={worldMedia} width="30px" height="34px" alt="media-icon"/>
+                    <img src={imgMedia} width="30px" height="30px" alt="media-icon"/>
+                        <img src={docMedia} width="30px" height="30px" alt="media-icon"/>
+                        <img src={gifMedia} width="30px" height="30px" alt="media-icon"/>
+                        <img src={worldMedia} width="30px" height="30px" alt="media-icon"/>
                     </div>
                     <PortalButton name="Publish" className="primary-button"/>
                 </InputMedia>
@@ -211,10 +228,10 @@ const ProfileView = () => {
                                 </p>
                                 <InputMedia style={{display: "flex", justifyContent:"space-between", margin:"0", padding:"0"}}>
                                     <div style={{display: "flex", justifyContent:"space-between", gap:"50px", marginTop:"30px"}}>
-                                        <img src={imgMedia} width="30px" height="34px" alt="media-icon"/>
-                                        <img src={docMedia} width="30px" height="34px" alt="media-icon"/>
-                                        <img src={gifMedia} width="30px" height="34px" alt="media-icon"/>
-                                        <img src={worldMedia} width="30px" height="34px" alt="media-icon"/>
+                                        <img src={imgMedia} width="30px" height="30px" alt="media-icon"/>
+                                        <img src={docMedia} width="30px" height="30px" alt="media-icon"/>
+                                        <img src={gifMedia} width="30px" height="30px" alt="media-icon"/>
+                                        <img src={worldMedia} width="30px" height="30px" alt="media-icon"/>
                                     </div>
                                 </InputMedia>
                             </PostWrapper>
