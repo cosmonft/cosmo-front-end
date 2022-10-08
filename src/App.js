@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
+import NFTView from "../src/views/nftView.jsx"
 
 import './App.css';
 
@@ -15,9 +16,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path=":country" element={<Layout />}>
-          <Route path="" element={<Gallery />} />
-          </Route>
+          <Route path="/:country" element={<Layout />} />
+          <Route path="/" exact element={<Gallery />} />
+          <Route path="/gallery/:nftid" exact element={<NFTView />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>

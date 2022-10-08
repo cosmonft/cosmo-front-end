@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, BrowserRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import ElementCard from '../../Card'
 import NFTexmpl from '../../../assets/NFTsExamples/nft-example.png'
@@ -11,9 +12,9 @@ import NFTexmpl7 from '../../../assets/NFTsExamples/nft-example7.png'
 import NFTexmpl8 from '../../../assets/NFTsExamples/nft-example8.png'
 
 const CardsGridLayout = styled.section`
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -60px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(2,1fr);
     width: auto;
 `
 
@@ -103,24 +104,33 @@ const NFTsList = [
 
 const CardsContainer = () => {
   return (
-    <div style={{width:"100vw", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+    <div style={{
+        width:"100vw",
+        display:"flex",
+        flexDirection:"column",
+        justifyContent:"center",
+        alignItems:"center",
+        marginTop: "15rem"
+        }}>
         <h1 style={{color:"#FFFFFF", fontSize:"47px"}}>
             Recomendados
         </h1>
         <CardsGridLayout>
-            {NFTsList.map(obj => (    
-                <GridItem key={obj.name} style={{gridColumn:""}}>
-                    <ElementCard
-                        img={obj.img}
-                        name={obj.name}
-                        usr={obj.usr}
-                        floorPrice={obj.floorPrice}
-                        mxn={obj.mxn}
-                        profit={obj.profit}
-                        width="235px"
-                        height="281px"
-                    />
-                </GridItem>
+            {NFTsList.map(obj => (
+                <Link key={obj.name} to={`/gallery/nft?name=${obj.name}`}>    
+                    <GridItem style={{gridColumn:""}}>
+                        <ElementCard
+                            img={obj.img}
+                            name={obj.name}
+                            usr={obj.usr}
+                            floorPrice={obj.floorPrice}
+                            mxn={obj.mxn}
+                            profit={obj.profit}
+                            width="235px"
+                            height="281px"
+                        />
+                    </GridItem>
+                </Link>
             ))}
         </CardsGridLayout>
     </div>

@@ -12,7 +12,10 @@ const GridFigCaption = styled.figcaption`
 const ElementCard = (props) => {
   return (
     <React.Fragment>
-        <Card style={{backgroundColor:"rgba(50,50,100,.5)"}}>
+        <Card style={{
+          backgroundColor:"rgba(50,50,100,.5)",
+          borderRadius: "20px"
+          }}>
           <figure>
             <img
               style={{objectFit:"contain"}}
