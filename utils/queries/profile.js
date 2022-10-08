@@ -13,8 +13,8 @@ export const createProfile = `
 `
 
 export const getProfile = `
-    query Profile {
-        profile(request: { profileId: $userAddress }) {
+    query Profile($request: SingleProfileQueryRequest!) {
+        profile(request: $request) {
         id
         name
         bio
