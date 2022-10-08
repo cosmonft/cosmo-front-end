@@ -16,6 +16,7 @@ const ProfileGridLayout = styled.section`
     grid-template-columns: 20% auto;
     margin-top: 50px;
     gap: 50px;
+    position: relative;
 `
 
 const GridItem = styled.div`
@@ -25,6 +26,7 @@ const GridItem = styled.div`
     margin: auto;
     justify-content: center;
     align-items: center;
+    position: sticky;
 `
 
 const GridFigCaption = styled.figcaption`
@@ -92,10 +94,11 @@ const TabIcon = styled.div`
 const FeedSection = styled.section`
     margin: auto;
     height: 100%;
+    overflow: auto;
 `
 const PostWrapper = styled.article`
     display: flex;
-    flex-direction: column;margin
+    flex-direction: column;
     align-items: flex-start;
     padding: 20px 20px 20px 26px;
     gap: 20px;
@@ -116,15 +119,6 @@ const posts = [
     {
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor vitae vulputate nascetur tempus, ullamcorper amet. Libero cursus cursus cras integer phasellus pellentesque. Leo ut nec."
     },
-    {
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor vitae vulputate nascetur tempus, ullamcorper amet. Libero cursus cursus cras integer phasellus pellentesque. Leo ut nec."
-    },
-    {
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor vitae vulputate nascetur tempus, ullamcorper amet. Libero cursus cursus cras integer phasellus pellentesque. Leo ut nec."
-    },
-    {
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor vitae vulputate nascetur tempus, ullamcorper amet. Libero cursus cursus cras integer phasellus pellentesque. Leo ut nec."
-    }
 ];
 
 const ProfileView = () => {
