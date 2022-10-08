@@ -14,7 +14,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-
+import { useWeb3React } from "@web3-react/core";
+import { walletConnect } from "../WalletConnect";
 import imago from './imago.svg';
 
 const Search = styled('div')(({ theme }) => ({
@@ -62,11 +63,34 @@ const Logo = styled('img')(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const { active, account, activate, deactivate } = 
+    useWeb3React();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const onConnect = async () => {
+    console.log("Connecting...");
+    try {
+      await activate(walletConnect);
+      localStorage.setItem("walletConnected", true);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const onDisconnect = async () => {
+    console.log("Disconecting...");
+    try {
+      await deactivate();
+      localStorage.setItem("walletConnected", false);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
