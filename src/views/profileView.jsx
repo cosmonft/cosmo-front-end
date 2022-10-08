@@ -14,6 +14,7 @@ import worldMedia from "./world-media.png"
 const ProfileGridLayout = styled.section`
     display: grid;
     grid-template-columns: 30% 70%;
+    margin-top: 50px;
 `
 
 const GridItem = styled.div`
@@ -118,7 +119,7 @@ const ProfileView = () => {
     const [nftClicked, setNftClicked] = useState(false)
 
   return (
-    <div style={{backgroundImage:`url(${bgImg})`, height: "100vh", fontFamily:"Poppins"}}>
+    <div style={{backgroundImage:`url(${bgImg})`, height: "100%", fontFamily:"Poppins"}}>
     <PrimarySearchAppBar />
     <ProfileGridLayout>
         <GridItem style={{}}>
