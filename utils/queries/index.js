@@ -1,38 +1,38 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 export const apolloClient = new ApolloClient({
-  uri: process.env.LENS_SUBGRAPH,
+  uri: "https://api-mumbai.lens.dev/",
   cache: new InMemoryCache(),
 });
 
 export const makeQuery = async (
-    query,
-    variables, 
+    inputQuery,
+    queryVars, 
     client
 ) => {
-    const output = variables === undefined 
+    const output = queryVars === undefined 
     ? await client.query({
-        query
+        query: gql(inputQuery)
     })
     : await client.query({
-        query,
-        variables
+        query: gql(inputQuery),
+        variables: queryVars
     })
     return output;
 };
 
 export const makeMutation = async (
-    mutation,
-    variables,
+    inputMutation,
+    mutationVars,
     client,
 ) => {
-    const output = variables === undefined
+    const output = mutationVars === undefined
     ? await client.mutate({
-        mutation
+            mutation: gql(inputMutation)
     })
     : await client.mutate({
-        mutation,
-        variables
+        mutation: gql(inputMutation),
+        variables: mutationVars
     });
     return output;
 };
