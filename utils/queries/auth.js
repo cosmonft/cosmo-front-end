@@ -1,4 +1,13 @@
-import { makeMutation } from ".";
+import { makeMutation, 
+    makeQuery } from ".";
+
+const requestChallenge = `
+    query ($request: ChallengeRequest!) {
+        challenge(request: $request) {
+            text
+        }
+    }
+`
 
 const authMutation = `
     mutation($request: SignedAuthChallenge!) { 
@@ -9,14 +18,31 @@ const authMutation = `
     }
 `
 
-export const authenticate = (address, signature) => {
-    return makeMutation(
+const generateChallenge = async (userAdrs) => {
+    const result = await makeQuery(
+        requestChallenge,
+        {
+            userAdrs
+        }
+    )
+    return result.data.challenge;
+}
+
+const verifyChallenge = async (userAdrs, signedTx) => {
+    const result = await makeMutation(
         authMutation,
         {
-            request: {
-                address,
-                signature
-            }
+            userAdrs,
+            signedTx
         }
-    );
+    )
+    return result.data.authenticate;
+}
+ 
+export const authenticate = async (signer) => {
+    const challengeResponse = await generateChallenge(signer.address);
+    const signature = await signer.signMessage(challengeResponse.text);
+    const authResult = await verifyChallenge(signer.address, signature);
+    console.log(`Login result: ${authenticatedResult}`);
+    return authResult;
 };
