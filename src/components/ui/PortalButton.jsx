@@ -10,7 +10,7 @@ const StyledButton = styled.button`
 	width: ${props => props.className === 'primary-button' ? '197px' : '197px'};
 	height: ${props => props.className === 'primary-button' ? '48px' : '48px'};
 	padding: ${props => props.className === 'primary-button' ? '0' : '1px'};
-	background-color: ${props => props.className === 'primary-button' ? '#A86EFF' : "none"};
+	background-color: ${props => props.className === 'primary-button' ? '#A86EFF' : "rgba(0,0,0,.1)"};
 	border: ${props => props.className === 'primary-button' ? 'none' : '.2rem solid #A86EFF'};
 	border-radius: .6rem;
 	font-family: 'Manrope';

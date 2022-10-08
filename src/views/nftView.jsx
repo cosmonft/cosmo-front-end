@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react'   
 import miniImg from '../assets/miniImg.png'
 import NFTimg from '../assets/nft-image-example.png';
 import ElementCard from '../components/Card/index.jsx'

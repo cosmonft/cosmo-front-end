@@ -7,7 +7,7 @@ import './App.css';
 
 import { Home } from './home';
 import { Layout } from './Layout';
-import { Gallery } from './gallery';
+import ProfileView from "./views/profileView.jsx";
 
 function App() {
   return (
@@ -16,9 +16,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/:country" element={<Layout />} />
-          <Route path="/" exact element={<Gallery />} />
+          <Route path="/:country" element={<Layout />}></Route>
           <Route path="/gallery/:nftid" exact element={<NFTView />} />
+          <Route path="/profile" exact element={<ProfileView />}/>
         </Routes>
       </BrowserRouter>
     </React.Fragment>
