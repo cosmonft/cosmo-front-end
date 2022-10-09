@@ -24,7 +24,16 @@ const PortalButton = (props) => {
   return (
 	  <div>
 		<Wrapper>
-			<StyledButton className={props.className} onClick={props.handleClick}>{props.name}</StyledButton>
+			<StyledButton className={props.className} onClick={props.handleClick}>
+				{
+					props.img ?
+					<div>
+						<img src={props.img} width="29px" height="29px"/>
+						{props.name}
+					</div>
+					: <p style={{marginTop:"5px"}}>{props.name}</p>
+				}
+			</StyledButton>
 		</Wrapper>
 	  </div>
   )

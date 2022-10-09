@@ -14,8 +14,11 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { PortalButton } from '../ui/PortalButton';
+import lensImg from "../../assets/lens.png"
 
 import imago from '../../assets/imago.png';
+import { fontFamily, fontSize } from '@mui/system';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -62,6 +65,7 @@ const Logo = styled('img')(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const [logged, setLogged] = React.useState(true)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -127,7 +131,7 @@ export default function PrimarySearchAppBar() {
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
-            <MailIcon />
+            <MailIcon/>
           </Badge>
         </IconButton>
         <p>Messages</p>
@@ -173,9 +177,9 @@ export default function PrimarySearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Logo src={imago} alt="Imago" sx={{ display: { xs: 'none', sm: 'block' } }} />
-          <Search>
+          <Search style={{border:"solid 2px #FFF", borderRadius:"30px"}}>
             <SearchIconWrapper>
-              <SearchIcon />
+              <SearchIcon style={{color:"#FFF"}}/>
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
@@ -183,7 +187,7 @@ export default function PrimarySearchAppBar() {
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, color: "rgba(151, 71, 255, 1)"}}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
                 <MailIcon />
@@ -195,7 +199,7 @@ export default function PrimarySearchAppBar() {
               color="inherit"
             >
               <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
+                <NotificationsIcon style={{color:"rgba(151, 71, 255, 1)"}}/>
               </Badge>
             </IconButton>
             <IconButton
@@ -207,7 +211,11 @@ export default function PrimarySearchAppBar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              {
+                logged ?
+                  <PortalButton name="Lens" className="primary-button" img={lensImg} handleClick={console.log()}/>
+                : <AccountCircle style={{color:"rgba(151, 71, 255, 1)"}}/>
+              }
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
