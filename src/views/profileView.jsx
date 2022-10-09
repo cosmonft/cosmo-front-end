@@ -2,6 +2,7 @@ import { React, useState } from 'react'
 import styled from 'styled-components'
 import { PortalButton } from '../components/ui/PortalButton'
 import PrimarySearchAppBar from '../components/nav/index.js';
+import ElementCard from "../components/Card/index"
 
 import ProfileImg from "./profileImg.png"
 import BellImg from "./bell.png"
@@ -80,10 +81,12 @@ const TabWrapper = styled.div`
     margin-left: 50px;
 `
 
-const TabIcon = styled.div`
+const TabIcon = styled.button`
     height: 58px;
     width: 106px;
     text-align: center;
+    background: rgba(0,0,0,.1);
+    border: none;
     &:hover {
         background: rgba(151, 71, 255, 0.3);
         border-radius: 15px;
@@ -128,12 +131,25 @@ const posts = [
 
 const ProfileView = () => {
     const [feedClicked, setFeedClicked] = useState(true)
-    const [repliesClicked, setRepliesClicked] = useState(false)
-    const [mediaClicked, setMediaClicked] = useState(false)
+    // const [repliesClicked, setRepliesClicked] = useState(false)
+    // const [mediaClicked, setMediaClicked] = useState(false)
     const [nftClicked, setNftClicked] = useState(false)
+    const [tabValue, setTabValue] = useState("Feed")
 
-    const handleClick = () => {
-
+    const handleClick = (e) => {
+        e.preventDefault();
+        setTabValue(e.target.innerText)
+        if(tabValue === "Feed") {
+            setFeedClicked(true)
+            // setRepliesClicked(false)
+            // setMediaClicked(false)
+            setNftClicked(false)
+        } else if (tabValue === "NFTs") {
+            setFeedClicked(false)
+            // setRepliesClicked(false)
+            // setMediaClicked(false)
+            setNftClicked(true)
+        }
     }
 
   return (
@@ -187,17 +203,25 @@ const ProfileView = () => {
         </GridItem>
         <GridItem style={{marginLeft:"600px", marginTop:"100px"}}>
             <TabWrapper>
-                <TabIcon>
-                    <h2 style={{color:"#FFF"}}>Feed</h2>
+                <TabIcon onClick={handleClick}>
+                    <h2 style={{color:"#FFF"}}>
+                        Feed
+                    </h2>
                 </TabIcon>
-                <TabIcon>
-                    <h2 style={{color:"#FFF"}}>Replies</h2>
+                <TabIcon onClick={handleClick}>
+                    <h2 style={{color:"#FFF"}}>
+                        Replies
+                    </h2>
                 </TabIcon>
-                <TabIcon>
-                    <h2 style={{color:"#FFF"}}>Media</h2>
+                <TabIcon onClick={handleClick}>
+                    <h2 style={{color:"#FFF"}}>
+                        Media
+                    </h2>
                 </TabIcon>
-                <TabIcon>
-                    <h2 style={{color:"#FFF"}}>NFTs</h2>
+                <TabIcon onClick={handleClick}>
+                    <h2 style={{color:"#FFF"}}>
+                        NFTs
+                    </h2>
                 </TabIcon>
             </TabWrapper>
             <UserInputWrapper>
@@ -240,7 +264,7 @@ const ProfileView = () => {
                         )
                     )
                 }
-                {
+                {/* {
                     repliesClicked && 
                     posts.map( post => (
                         <FeedSection>
@@ -257,7 +281,7 @@ const ProfileView = () => {
                         </FeedSection>
                         )
                     )
-                }
+                } */}
                 {
                     nftClicked && 
                     posts.map( post => (
