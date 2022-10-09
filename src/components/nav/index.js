@@ -15,12 +15,11 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useWeb3React } from "@web3-react/core";
-import { walletConnect } from "../WalletConnect";
+import { walletConnect } from "../WalletConnect/wallet";
 import { PortalButton } from '../ui/PortalButton';
 import lensImg from "../../assets/lens.png"
 
 import imago from '../../assets/imago.png';
-import { fontFamily, fontSize } from '@mui/system';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -67,7 +66,7 @@ const Logo = styled('img')(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
-  const { active, account, activate, deactivate } = 
+  const { active, account, activate } = 
     useWeb3React();
 
   const [logged, setLogged] = React.useState(true)
@@ -86,16 +85,6 @@ export default function PrimarySearchAppBar() {
       console.error(err);
     }
   };
-
-  const onDisconnect = async () => {
-    console.log("Disconecting...");
-    try {
-      await deactivate();
-      localStorage.setItem("walletConnected", false);
-    } catch (err) {
-      console.error(err);
-    }
-  }
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -238,7 +227,7 @@ export default function PrimarySearchAppBar() {
             >
               {
                 logged ?
-                  <PortalButton name="Lens" className="primary-button" img={lensImg} handleClick={console.log()}/>
+                  <PortalButton name="Lens" className="primary-button" img={lensImg} handleClick={onConnect}/>
                 : <AccountCircle style={{color:"rgba(151, 71, 255, 1)"}}/>
               }
             </IconButton>

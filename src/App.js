@@ -17,8 +17,8 @@ function getLibrary(provider) {
 
 function App() {
   return (
+    <Web3ReactProvider getLibrary={getLibrary}>
     <React.Fragment>
-      <Web3ReactProvider getLibrary={getLibrary}>
       <CssBaseline />
       <BrowserRouter>
         <Routes>
@@ -28,8 +28,8 @@ function App() {
           <Route path="/profile" exact element={<ProfileView />}/>
         </Routes>
       </BrowserRouter>
-      </Web3ReactProvider>
     </React.Fragment>
+    </Web3ReactProvider>
   );
 }
 
