@@ -3,12 +3,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Web3ReactProvider } from "@web3-react/core";
 import { providers } from "ethers";
+import NFTView from "../src/views/nftView.jsx"
 
 import './App.css';
 
 import { Home } from './home';
 import { Layout } from './Layout';
-import { Gallery } from './gallery';
+import ProfileView from "./views/profileView.jsx";
 
 function getLibrary(provider) {
   return new providers.Web3Provider(provider);
@@ -22,9 +23,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path=":country" element={<Layout />}>
-          <Route path="" element={<Gallery />} />
-          </Route>
+          <Route path="/:country" element={<Layout />}></Route>
+          <Route path="/gallery/:nftid" exact element={<NFTView />} />
+          <Route path="/profile" exact element={<ProfileView />}/>
         </Routes>
       </BrowserRouter>
       </Web3ReactProvider>

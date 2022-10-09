@@ -16,7 +16,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useWeb3React } from "@web3-react/core";
 import { walletConnect } from "../WalletConnect";
-import imago from './imago.svg';
+
+import imago from '../../assets/imago.png';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',

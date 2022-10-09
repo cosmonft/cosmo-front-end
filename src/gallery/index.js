@@ -1,31 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
-
 // import { useParams } from 'react-router-dom';
 import {PortalButton} from '../components/ui/PortalButton.jsx'
 import bgImg from "../assets/Fondo.png"
 import miniImg from '../assets/miniImg.png'
 import NFTimg from '../assets/nft-image-example.png';
 import CardsContainer from '../components/Containers/CardsWrapper/index.jsx';
+import CategoriesWrapper from '../components/Containers/CategoriesWrapper/index.jsx'
+import TutorialWrapper from '../components/Containers/TutorialWrapper/index'
 import ElementCard from '../components/Card/index.jsx';
 
 const GalleryLayout = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
 	justify-content: center;
 	align-items: center;
   box-sizing: border-box;
+  margin: auto;
 `
 
 const Wrapper = styled.section`
-	margin-left: 10rem;
 	align-items: center;
 	justify-content: center;
 	align-text: center;
   width: 1200px;
-	height: 90.0rem;
+	height: 100vh;
 	left: -7px;
 	top: 0px;
-	display: block;
 `
 const DescriptorGridLayout = styled.div`
 	display: grid;
@@ -87,10 +90,11 @@ export const Gallery = (props) => {
                   height="560px"/>
               </StyledGridItem>
             </DescriptorGridLayout>
-            <CardsContainer/>
           </Wrapper>
+          <CardsContainer/>
+          <CategoriesWrapper />
+          <TutorialWrapper />
       </GalleryLayout>
-      <CardsContainer />
     </div>
   )
 };
