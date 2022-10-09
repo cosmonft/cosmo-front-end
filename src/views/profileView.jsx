@@ -11,10 +11,9 @@ import docMedia from "./doc-media.png"
 import gifMedia from "./gif-media.png"
 import worldMedia from "./world-media.png"
 
-const ProfileGridLayout = styled.section`
+const ProfileFlexboxLayout = styled.section`
     display: flex;
     flex-wrap: wrap;
-    margin-top: 50px;
     position: relative;
     margin: auto;
     justify-content: flex-start;
@@ -142,8 +141,8 @@ const ProfileView = () => {
     <div style={{position:"fixed", zIndex:"1", width:"100%"}}>
         <PrimarySearchAppBar />
     </div>
-    <ProfileGridLayout>
-        <GridItem style={{height:"100%", width: "300px", position:"fixed"}}>
+    <ProfileFlexboxLayout>
+        <GridItem style={{height:"100%", width: "300px", position:"fixed", marginTop:"50px"}}>
             <figure>
                 <img
                     src={ProfileImg}
@@ -186,7 +185,7 @@ const ProfileView = () => {
                 </div>
             </div>
         </GridItem>
-        <GridItem style={{marginLeft:"600px"}}>
+        <GridItem style={{marginLeft:"600px", marginTop:"100px"}}>
             <TabWrapper>
                 <TabIcon>
                     <h2 style={{color:"#FFF"}}>Feed</h2>
@@ -269,7 +268,7 @@ const ProfileView = () => {
                     )
                 }
         </GridItem>
-    </ProfileGridLayout>
+    </ProfileFlexboxLayout>
     </div>
   )
 }
