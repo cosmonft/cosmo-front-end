@@ -12,21 +12,21 @@ import gifMedia from "./gif-media.png"
 import worldMedia from "./world-media.png"
 
 const ProfileGridLayout = styled.section`
-    display: grid;
-    grid-template-columns: 20% auto;
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 50px;
-    gap: 50px;
     position: relative;
+    margin: auto;
+    justify-content: flex-start;
 `
 
 const GridItem = styled.div`
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    margin: auto;
+    margin: auto 100px;
     justify-content: center;
     align-items: center;
-    position: sticky;
 `
 
 const GridFigCaption = styled.figcaption`
@@ -119,6 +119,12 @@ const posts = [
     {
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor vitae vulputate nascetur tempus, ullamcorper amet. Libero cursus cursus cras integer phasellus pellentesque. Leo ut nec."
     },
+    {
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor vitae vulputate nascetur tempus, ullamcorper amet. Libero cursus cursus cras integer phasellus pellentesque. Leo ut nec."
+    },
+    {
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor vitae vulputate nascetur tempus, ullamcorper amet. Libero cursus cursus cras integer phasellus pellentesque. Leo ut nec."
+    },
 ];
 
 const ProfileView = () => {
@@ -132,10 +138,12 @@ const ProfileView = () => {
     }
 
   return (
-    <div style={{backgroundImage:`url(${bgImg})`, height: "100%", fontFamily:"Poppins"}}>
-    <PrimarySearchAppBar />
+    <div style={{backgroundImage:`url(${bgImg})`, height: "100%", fontFamily:"Poppins", position:"relative"}}>
+    <div style={{position:"fixed", zIndex:"1", width:"100%"}}>
+        <PrimarySearchAppBar />
+    </div>
     <ProfileGridLayout>
-        <GridItem style={{height:"100%"}}>
+        <GridItem style={{height:"100%", width: "300px", position:"fixed"}}>
             <figure>
                 <img
                     src={ProfileImg}
@@ -170,7 +178,7 @@ const ProfileView = () => {
                 />
             </div>
             <div style={{marginLeft:"50px"}}>
-                <p style={{color:"#FFF", width: "auto"}}>
+                <p style={{color:"#FFF"}}>
                     UX/UI Designer working in web3. Ilustrator and NFT artist, Frontend Developer, Solidity Developer.
                 </p>
                 <div>
@@ -178,7 +186,7 @@ const ProfileView = () => {
                 </div>
             </div>
         </GridItem>
-        <GridItem>
+        <GridItem style={{marginLeft:"600px"}}>
             <TabWrapper>
                 <TabIcon>
                     <h2 style={{color:"#FFF"}}>Feed</h2>

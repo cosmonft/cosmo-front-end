@@ -4,7 +4,7 @@ import ReactCountryFlag from 'react-country-flag';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-import imago from './imago.svg';
+import imago from '../assets/imago.png';
 
 const Flag = styled(ReactCountryFlag)`
   margin-right: 10px;
